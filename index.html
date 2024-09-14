@@ -1,0 +1,177 @@
+# Crear los archivos 'index.html', 'styles.css' y 'script.js' con el contenido proporcionado
+
+# Contenido de index.html
+index_html_content = """
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto de Procesamiento de Lenguaje Natural</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto de Procesamiento de Lenguaje Natural</h1>
+        <p>Una exploración completa del análisis de texto con técnicas avanzadas</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#descripcion">Descripción</a></li>
+            <li><a href="#preprocesamiento">Preprocesamiento</a></li>
+            <li><a href="#modelos">Modelos</a></li>
+            <li><a href="#visualizacion">Visualización</a></li>
+            <li><a href="#codigo">Código</a></li>
+        </ul>
+    </nav>
+
+    <section id="descripcion">
+        <h2>Descripción del Proyecto</h2>
+        <p>En este proyecto, se realizó un análisis de procesamiento de lenguaje natural (NLP) utilizando técnicas como lematización con SpaCy, vectorización con TF-IDF, balanceo de clases con SMOTE y varios modelos de clasificación como Random Forest, SVM y Naive Bayes.</p>
+    </section>
+
+    <section id="preprocesamiento">
+        <h2>Preprocesamiento de Texto</h2>
+        <p>Utilizamos SpaCy y NLTK para limpiar y lematizar el texto, eliminando "stopwords" y caracteres especiales. Aquí hay un ejemplo del código de preprocesamiento:</p>
+        <pre><code>
+# Función de preprocesamiento mejorada
+def preprocesar_texto(texto):
+    # Convertir a minúsculas
+    texto = texto.lower()
+    # Eliminar URL, menciones y caracteres especiales
+    texto = re.sub(r"http\\S+|www\\S+|https\\S+", '', texto)
+    ...
+        </code></pre>
+    </section>
+
+    <section id="modelos">
+        <h2>Modelos de Clasificación</h2>
+        <p>Probamos varios modelos, incluyendo Random Forest, SVM y Naive Bayes, para clasificar los datos después del preprocesamiento. Aquí están los resultados de cada modelo:</p>
+        <ul>
+            <li><strong>Random Forest:</strong> Precisión: 85%</li>
+            <li><strong>SVM:</strong> Precisión: 83%</li>
+            <li><strong>Naive Bayes:</strong> Precisión: 78%</li>
+        </ul>
+    </section>
+
+    <section id="visualizacion">
+        <h2>Visualización de Datos</h2>
+        <p>Esta sección incluye gráficos y visualizaciones interactivas (se puede reemplazar con gráficos reales usando JavaScript o bibliotecas como Plotly):</p>
+        <div id="grafico"></div>
+    </section>
+
+    <section id="codigo">
+        <h2>Código del Proyecto</h2>
+        <p>Puedes encontrar todo el código de este proyecto en nuestro <a href="https://github.com/tuusuario/tuprojecto">repositorio de GitHub</a>.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Proyecto NLP - Desarrollado por [Tu Nombre]</p>
+    </footer>
+</body>
+</html>
+"""
+
+# Contenido de styles.css
+styles_css_content = """
+/* Estilos básicos */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #f4f4f4;
+    color: #333;
+    margin: 0;
+}
+
+/* Encabezado */
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Barra de navegación */
+nav {
+    background: #444;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Secciones */
+section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Código */
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+"""
+
+# Contenido de script.js
+script_js_content = """
+document.addEventListener('DOMContentLoaded', function() {
+    // Ejemplo: Crear un gráfico básico con JavaScript (puedes reemplazar con Plotly u otra biblioteca)
+    var graficoDiv = document.getElementById('grafico');
+    graficoDiv.innerHTML = '<p>Aquí irá un gráfico interactivo.</p>';
+
+    // Aquí puedes añadir más lógica para gráficos interactivos o animaciones
+});
+"""
+
+# Guardar los contenidos en archivos
+with open('/mnt/data/index.html', 'w') as file:
+    file.write(index_html_content)
+
+with open('/mnt/data/styles.css', 'w') as file:
+    file.write(styles_css_content)
+
+with open('/mnt/data/script.js', 'w') as file:
+    file.write(script_js_content)
+
+# Crear un archivo zip con todos los archivos
+import zipfile
+
+zip_path = '/mnt/data/proyecto_nlp_web.zip'
+with zipfile.ZipFile(zip_path, 'w') as zip_file:
+    zip_file.write('/mnt/data/index.html', 'index.html')
+    zip_file.write('/mnt/data/styles.css', 'styles.css')
+    zip_file.write('/mnt/data/script.js', 'script.js')
+
+# Proveer el archivo zip listo para descargar
+zip_path
