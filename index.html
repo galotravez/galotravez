@@ -29,12 +29,31 @@ index_html_content = """
 
     <section id="descripcion">
         <h2>Descripción del Proyecto</h2>
-        <p>En este proyecto, se realizó un análisis de procesamiento de lenguaje natural (NLP) utilizando técnicas como lematización con SpaCy, vectorización con TF-IDF, balanceo de clases con SMOTE y varios modelos de clasificación como Random Forest, SVM y Naive Bayes.</p>
+        <p>Este proyecto se enfoca en el análisis de transcripciones de charlas TED en español usando técnicas de procesamiento de lenguaje natural (NLP). 
+
+### Descripción del Proyecto:
+1. **Preprocesamiento:** Limpieza de texto con NLTK, eliminando caracteres especiales, "stopwords" y aplicando lematización.
+2. **Vectorización:** Transformación del texto en datos numéricos mediante TF-IDF para capturar la importancia de las palabras en los documentos.
+3. **Balanceo de Clases:** Uso de SMOTE para equilibrar las clases en el conjunto de datos, mejorando la calidad de los modelos.
+4. **Modelado:** Entrenamiento de varios modelos de clasificación (Random Forest, SVM, Naive Bayes) para categorizar las charlas.
+5. **Evaluación y Visualización:** Análisis de los resultados de los modelos y agrupamiento de datos con K-Means.
+
+El proyecto culmina en una página web dinámica que presenta el proceso y los resultados obtenidos.</p>
     </section>
 
     <section id="preprocesamiento">
         <h2>Preprocesamiento de Texto</h2>
-        <p>Utilizamos SpaCy y NLTK para limpiar y lematizar el texto, eliminando "stopwords" y caracteres especiales. Aquí hay un ejemplo del código de preprocesamiento:</p>
+        <p>El procesamiento de este proyecto se centra en transformar y preparar las transcripciones de charlas TED para su análisis y clasificación. 
+
+### Descripción del Procesamiento:
+1. **Limpieza de Texto:** Se utiliza NLTK para eliminar caracteres especiales, URLs, menciones y "stopwords". El texto se convierte a minúsculas y se lematiza para reducir las palabras a su forma base.
+2. **Vectorización:** Se aplica TF-IDF para convertir el texto en una representación numérica, destacando la relevancia de palabras y frases (unigramas y bigramas) en los documentos.
+3. **Balanceo de Clases:** Para abordar el desbalanceo en las categorías, se utiliza SMOTE, creando muestras sintéticas que equilibran el conjunto de datos.
+4. **División de Datos:** Los datos se dividen en conjuntos de entrenamiento y prueba para evaluar el rendimiento de los modelos.
+5. **Modelado:** Entrenamiento de diferentes modelos de clasificación (Random Forest, SVM, Naive Bayes) con los datos procesados.
+6. **Evaluación:** Los resultados se analizan mediante métricas como la precisión y la puntuación de silueta para el agrupamiento de datos.
+
+Este procesamiento garantiza que los modelos trabajen con datos limpios, balanceados y optimizados para una clasificación efectiva.</p>
         <pre><code>
 # Función de preprocesamiento mejorada
 def preprocesar_texto(texto):
@@ -48,7 +67,28 @@ def preprocesar_texto(texto):
 
     <section id="modelos">
         <h2>Modelos de Clasificación</h2>
-        <p>Probamos varios modelos, incluyendo Random Forest, SVM y Naive Bayes, para clasificar los datos después del preprocesamiento. Aquí están los resultados de cada modelo:</p>
+        <p>En este proyecto, se implementan y evalúan tres modelos de clasificación para categorizar las transcripciones de charlas TED en español:
+
+### Descripción de los Modelos:
+1. **Random Forest:** 
+   - Es un modelo basado en la construcción de múltiples árboles de decisión, creando un "bosque" que vota por la categoría final. 
+   - Este modelo es robusto y maneja bien conjuntos de datos con muchas características.
+   - En el proyecto, se utiliza con 200 árboles y una profundidad máxima definida para evitar sobreajuste.
+
+2. **SVM (Support Vector Machine):**
+   - Busca encontrar un hiperplano óptimo que separe las clases en el espacio de características.
+   - En este caso, se utiliza un kernel lineal para clasificar las transcripciones.
+   - SVM es efectivo en problemas con muchas características, como es común en análisis de texto.
+
+3. **Naive Bayes (MultinomialNB):**
+   - Un modelo probabilístico que asume independencia entre las características.
+   - Se adapta bien al procesamiento de lenguaje natural, especialmente en tareas de clasificación de texto.
+   - En este proyecto, se utiliza la versión multinomial, que es adecuada para datos representados por frecuencias, como el TF-IDF.
+
+### Evaluación:
+- Los modelos se entrenan y evalúan usando métricas como precisión y un informe de clasificación para medir el rendimiento en la predicción de categorías.
+  
+Cada modelo tiene sus ventajas, y la diversidad en los enfoques permite comparar y seleccionar el mejor rendimiento para la tarea de clasificación.</p>
         <ul>
             <li><strong>Random Forest:</strong> Precisión: 85%</li>
             <li><strong>SVM:</strong> Precisión: 83%</li>
@@ -58,13 +98,28 @@ def preprocesar_texto(texto):
 
     <section id="visualizacion">
         <h2>Visualización de Datos</h2>
-        <p>Esta sección incluye gráficos y visualizaciones interactivas (se puede reemplazar con gráficos reales usando JavaScript o bibliotecas como Plotly):</p>
+        <p>En este proyecto, la visualización se utiliza para explorar y comprender mejor la estructura de los datos y los resultados del análisis.
+
+### Descripción de la Visualización:
+
+1. **Reducción de Dimensionalidad con PCA:** 
+   - Se aplica Análisis de Componentes Principales (PCA) para reducir la alta dimensionalidad de los datos generados por la vectorización TF-IDF.
+   - PCA comprime los datos a 50 componentes principales, conservando la mayor parte de la variabilidad. Esto facilita la visualización y el análisis del agrupamiento en un espacio más manejable.
+
+2. **Agrupamiento con K-Means:**
+   - Tras la reducción de dimensionalidad, se aplica el algoritmo de K-Means para agrupar los datos en 5 clusters.
+   - Se evalúa la calidad de los clusters usando la puntuación de silueta, que mide qué tan bien se separan los grupos, ayudando a identificar patrones y similitudes entre las transcripciones.
+
+3. **Gráficos Interactivos:** 
+   - En la página web dinámica, se pueden incluir gráficos interactivos para mostrar los resultados y el agrupamiento de los datos. Aunque no se detallan los gráficos específicos en el código, se menciona la posibilidad de utilizar bibliotecas como Plotly para representar de forma visual los resultados de los modelos y el agrupamiento.
+
+Estas visualizaciones permiten analizar la distribución de los datos, identificar patrones y evaluar la eficacia de los modelos utilizados en la clasificación.</p>
         <div id="grafico"></div>
     </section>
 
     <section id="codigo">
         <h2>Código del Proyecto</h2>
-        <p>Puedes encontrar todo el código de este proyecto en nuestro <a href="https://github.com/tuusuario/tuprojecto">repositorio de GitHub</a>.</p>
+        <p>Puedes encontrar todo el código de este proyecto en nuestro <a href="https://github.com/galotravez/galotravez/blob/main/00_TRABAJO_FINAL_NLP.ipynb">repositorio de GitHub</a>.</p>
     </section>
 
     <footer>
